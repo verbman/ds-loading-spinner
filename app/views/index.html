@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-xlarge">
+        Components prototypes
+      </h1>{{releaseVersion | log }}
+
+      <h2 class="heading-large">Loader</h2>
+      <p>A loading / progress spinner shown when actions take a period of time. Optionally can show a message / percentage that counts up.</p>
+
+      <div class="form-group">
+        <a class="button button-start" href="components/loader" role="button">View demo</a>
+      </div>
+
+      <h3 class="heading-medium">Variations</h3>
+      <ul class="list list-bullet">
+        <li><a href="components/loader-message">Loader with generic message</a></li>
+        <li><a href="components/loader-progress">Loader with updating message</a></li>
+        <li><a href="components/loader-inverted">Loader on different backgrounds</a></li>
+      </ul>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
