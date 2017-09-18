@@ -1,68 +1,36 @@
-# Character / Word Count
+# Loading spinner
 
 ## About the component
 
-A character/word count limit that counts down as users type in to a field. If the user goes over the limit, it counts up.
+An accessible loading/progress spinner shown when actions take a period of time. Optionally can show a message/percentage that counts up.
+
 
 ## Demo
 
-- [Character count prototype](https://govuk-charcount-prototype.herokuapp.com/components/char-count)
-- [Word count prototype](https://govuk-charcount-prototype.herokuapp.com/components/word-count)
-- [Char count prototype with threshold](https://govuk-charcount-prototype.herokuapp.com/components/char-count-threshold)
-- [Char count prototype with highlight](https://govuk-charcount-prototype.herokuapp.com/components/char-count-highlight)
+- [Loading spinner prototype](https://govuk-loader-prototype.herokuapp.com/components/loader)
+- [Loading spinner with generic message](https://govuk-loader-prototype.herokuapp.com/components/loader-message)
+- [Loading spinner with updating message](https://govuk-loader-prototype.herokuapp.com/components/loader-progress)
+- [Loading spinner with different backgrounds](https://govuk-loader-prototype.herokuapp.com/components/loader-inverted)
 
 
 ## Usage
-### Character Count
-#### HTML
-Define the fields with a ``maxlength`` attribute and add a *javascript handler* class (e.g. ``js-char-count``). The field **must** have an ``id`` attribute set to a unique value.
-
+Initialize the component by specifying the container (e.g. ``govuk-box``) that will contain the loading spinner.
 ```
-<input id="name-field" class="form-control js-char-count" type="text" aria-required="true" maxlength="20">
-```
-
-```
-<textarea id="description-field" class="form-control js-char-count" rows="5" aria-required="true" maxlength="500"></textarea>
-```
-
-#### JavaScript
-Extend the fields that have a specific class (e.g. ``js-char-count``) to display character count
-```
-var charCount = new GOVUK.CharCount()
-charCount.init({
-  selector: '.js-char-count'
-})
-```
-
-### Word Count
-#### HTML
-Since there is no *maxwords* attribute in HTML5, define the fields with a ``data-maxwords`` attribute and add a *javascript handler* class (e.g. ``js-word-count``). The field **must** have an ``id`` attribute set to a unique value.
-
-```
-<input id="name-field" class="form-control js-word-count" type="text" aria-required="true" data-maxwords="10">
-```
-
-```
-<textarea id="description-field" class="form-control js-word-count" rows="5" aria-required="true" data-maxwords="30"></textarea>
-```
-
-#### JavaScript
-Extend the fields with a specific class (e.g. ``js-word-count``) to display word count. For initialising the *Word Count* you must add the ``wordCount: true`` to the options of the ``init`` function.
-```
-var charCount = new GOVUK.CharCount()
-charCount.init({
-  selector: '.js-word-count',
-  wordCount: true
+var loader = new GOVUK.Loader()
+loader.init({
+  container: 'govuk-box'
 })
 ```
 
 ## Options
-You can display the count message when the users are at 50% or more setting a percentage value as ``threshold``
+There are a couple of options that you can pass as arguments when initializing the component
 ```
 var charCount = new GOVUK.CharCount()
 charCount.init({
   selector: '.js-word-count',
-  wordCount: true,
-  threshold: 50
+  labelText: 'Loading...',
+  label: true,
+  progress: 50,
+  color: '#000'
 })
 ```
