@@ -2,13 +2,13 @@
 
 ## What's this?
 
-This describes the necessary behaviours that an character counter needs to meet to be usable by assistive technologies.
+This describes the necessary behaviours that a loading spinner needs to meet to be usable by assistive technologies.
 
-They are useful if you are evaluating `loader`, or a different loading solution.
+They are useful if you are evaluating `accessible-loading-spinner`, or a different loading spinner solution.
 
 ## User story
 
-> As an Assistive Technology (AT) user, I want to know if there are limits to fields and how close I am to the limit, so that I can provide appropriate content.
+> As an Assistive Technology (AT) user, I want to know if I'm waiting for a page/content/result to load.
 
 ## Acceptance criteria
 
@@ -16,7 +16,5 @@ The field with autocomplete must:
 
 1. Be focusable with a keyboard
 1. Indicate when it has keyboard focus
-1. Inform the user that it is an editable field
-1. Inform the user if there is a pre-filled value
-1. Inform the user about the character limit
-1. Inform the user as the number of left characters changes
+1. Inform the user that it is progress indicator
+1. Inform the user when the progress indicator changes
