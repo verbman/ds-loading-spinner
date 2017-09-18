@@ -23,7 +23,7 @@ loader.init({
 ```
 
 ## Options
-There are a couple of options that you can pass as arguments when initializing the component
+You can configure the loading spinner by passing optional arguments when initializing the component as follows.
 ```
 var charCount = new GOVUK.CharCount()
 charCount.init({
