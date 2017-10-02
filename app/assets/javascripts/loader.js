@@ -138,16 +138,8 @@
         'id': 'loader',
         'class': 'govuk-c-loader',
         'role': 'progressbar', // role progressbar, slider, status
-        'aria-busy': 'true',
-        'aria-atomic': false,
         'aria-label': options.labelText,
-        'aria-labelledby': 'loading-label', // for generic or updating messages
-        // 'aria-describedby': 'loading-label',
-        'aria-live': 'polite',
         // 'aria-valuetext': options.labelText, //human readable text alternative of aria-valuenow
-        // 'aria-valuemin': '0',
-        // 'aria-valuenow': '0',
-        // 'aria-valuemax': '100',
         'tabindex': '0'
       })
 
@@ -179,11 +171,11 @@
         var label = Loader.prototype.createHtmlElement('label', {
           'id': 'loading-label',
           'class': 'govuk-c-loader__label',
-          'role': 'status',
-          'aria-live': 'polite',
-          'aria-atomic': false
+          'role': 'status'
+          // 'aria-live': 'polite'
         })
         label.innerHTML = options.labelText
+        element.setAttribute('aria-labelledby', 'loading-label') // for generic or updating messages
         element.appendChild(label)
         // Save label reference for updates
         this.label = label
@@ -191,7 +183,7 @@
 
       // Set ARIA attributes to show progress
       if (options.progress) {
-        element.setAttribute('role', 'slider')
+        // element.setAttribute('role', 'slider')
         element.setAttribute('aria-valuemin', '0')
         element.setAttribute('aria-valuenow', '0')
         element.setAttribute('aria-valuemax', '100')
@@ -199,6 +191,7 @@
 
       // Insert the loading elements
       container.insertBefore(element, container.firstChild || null)
+      container.setAttribute('aria-busy', 'true')
 
       // Save references
       this.container = container
@@ -265,19 +258,6 @@
       element.childNodes[i].setAttribute('opacity', value)
     }
   }
-
-  // Returns path data for a rectangle with rounded right corners.
-  // The top-left corner is ⟨x,y⟩.
-  // Loader.prototype.rightRoundedRect = function (x, y, width, height, radius) {
-  //   return 'M' + x + ',' + y +
-  //   'h' + (width - radius) +
-  //   'a' + radius + ',' + radius + ' 0 0 1 ' + radius + ',' + radius +
-  //   'v' + (height - 2 * radius) +
-  //   'a' + radius + ',' + radius + ' 0 0 1 ' + -radius + ',' + radius +
-  //   'h' + (radius - width) +
-  //   'z'
-  // }
-  // rects.enter().append("path").attr("d", rightRoundedRect())
 
   Loader.prototype.initVML = function (options) {
     // Utility function to create VML elements. Optionally properties can be passed.
@@ -384,7 +364,10 @@
     if (!element) element = document.getElementById('loader')
     if (element) {
       clearTimeout(this.timeout)
-      if (element.parentNode) element.parentNode.removeChild(element)
+      if (element.parentNode) {
+        element.parentNode.removeAttribute('aria-busy')
+        element.parentNode.removeChild(element)
+      }
       element = undefined
     }
     return this
