@@ -1,6 +1,7 @@
 .govuk-c-loader{
   text-align: center;
   position: relative;
+  line-height: 0;
   &:focus{
     outline: 3px solid $focus-colour;
   }
@@ -11,7 +12,8 @@
 
   &__label{
     display: block;
-    padding-bottom: 1em;
-    margin-top: -1em;
+    line-height: 1em;
+    margin-top: -.5em;
+    padding-bottom: 1.5em;
   }
 }
